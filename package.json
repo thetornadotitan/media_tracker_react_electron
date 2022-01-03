@@ -2,20 +2,32 @@
   "name": "media_tracker_react_electron",
   "version": "0.1.0",
   "private": true,
+  "main": "./public/electron.js",
+  "homepage": "./",
+  "description": "Keep track of locally viewed video media. Plex for the disconnected",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "ffmpeg-static": "^4.4.0",
+    "ffprobe-static": "^3.0.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "node-disk-info": "^1.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set BROWSER=None && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "edev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "npm run build",
+    "epackwin": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": [
@@ -25,14 +37,43 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 1 electron version"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 electron version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.1",
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.5",
+    "wait-on": "^6.0.0"
+  },
+  "author": {
+    "name": "Isaac Hisey",
+    "email": "isaac.hisey@gmail.com",
+    "url": "https://kyojingames.com"
+  },
+  "build": {
+    "appId": "com.kyojingames.media-tracker-react-electron",
+    "productName": "Media Tracker Electron",
+    "copyright": "Copyright © 2022 ${author}",
+    "files": [
+      "build/**/*",
+      "build/**/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "deb"
+    }
   }
 }

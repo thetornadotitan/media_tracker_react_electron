@@ -1,38 +1,178 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#App {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.header {
+  padding: 0.5em;
+  background-color: #222;
+  user-select: none;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-weight: bold;
+  font-size: 24px;
+  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.75);
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em;
+  background-color: #222;
+}
+
+.nav-bar-path {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  overflow-wrap: anywhere;
+  margin-right: 0.5em;
+  user-select: none;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.nav-bar-search {
+  user-select: none;
+  padding: 10px;
+  background-color: lightblue;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 0.5em;
+  padding-right: 0em;
+  overflow-y: scroll;
+  background-color: #111;
+}
+
+/* File Stuff */
+
+.filecomp {
+  position: relative;
+  width: 256px;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  user-select: none;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  background-color: #222;
+}
+
+.filecomp-hover {
+  width: 100%;
+  height: 144px;
+  position: absolute;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px black;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.filecomp-hover:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid white;
+}
+
+.filecomp-path {
+  overflow-y: scroll;
+  max-width: 256px;
+  max-height: 144px;
+  position: absolute;
+  word-wrap: break-word;
+  user-select: none;
+}
+
+.filecomp-img {
+  width: 256px;
+  height: 144px;
+  color: rgb(240, 218, 122);
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.7));
+  background-color: lightslategrey;
+}
+
+.filecomp-buttons {
+  margin-top: 0.5em;
+  display: flex;
+}
+
+.filecomp-button {
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.7));
+  flex-grow: 1;
+}
+.filecomp-button svg:hover {
+  color: white !important;
+}
+
+/* Folder Stuff */
+.foldercomp {
+  position: relative;
+  width: 144px;
+  height: 144px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.foldercomp-hover {
+  width: 100%;
+  margin-top: 9px;
+  height: 117px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.foldercomp-hover:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.foldercomp-path {
+  overflow-y: scroll;
+  max-width: 144px;
+  max-height: 95px;
+  position: absolute;
+  word-wrap: break-word;
+  margin-top: 20px;
+  user-select: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.foldercomp-img {
+  width: 144px;
+  height: 144px;
+  color: rgb(240, 218, 122);
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
