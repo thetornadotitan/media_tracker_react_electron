@@ -54,7 +54,7 @@ function createWindow() {
   win.loadURL(startUrl);
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+  if (!app.isPackaged) win.webContents.openDevTools();
 
   win.on("closed", () => {
     // Dereference the window object, usually you would store windows
